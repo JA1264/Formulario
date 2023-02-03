@@ -47,7 +47,6 @@ function FormRegister() {
             </div>
             <button onClick={handlerClick}>Registro</button>
             <Link to='/login'><button>Regresar</button></Link>
-            <h1>ndjksjdscsdjcdjlcdklcd</h1>
            <div>
                
            </div>
