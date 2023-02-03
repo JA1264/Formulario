@@ -1,0 +1,9 @@
+
+header {
+    border: 3px rgb(246, 245, 245) solid;
+    display: flex;
+    justify-content:space-between;
+    padding: 0 4px;
+    background-color: rgb(60, 60, 61);
+    color: white;
+}
