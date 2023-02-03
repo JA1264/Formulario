@@ -1,30 +1,45 @@
 import {useState} from 'react'
+import { useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import Logo from '../../assets/react.svg'
 import '../../assets/styles/FormLogin.css'
-function FormLogin() {
-    //const [description, setDescription] = useState({msn: "CC", v : 1})
-    //const [username, setUsername] = useState('')
-    const [stateForm, setStateForm] = useState({username:'', password:''})
+function FormLogin(){
+    const form = useRef()
+    const navigate = useNavigate();
+
+    const formDataF = useRef();
     const handlerClick = (e) => {
-        e.preventDefault()
-        setDescription({msn: username})    
+    e.preventDefault();
+    const formData = new FormData(formDataF.current);
+    let URI = "http://34.225.239.102/api/iniciar";
+    let options = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        usuario: formData.get("usuario"),
+        contrasenia: formData.get("contrasenia")
+      }),
+    };
+    console.log(options.body)
+    fetch(URI, options)
+      .then((response) => response.json())
+      .then((data) => {
+        alert(JSON.stringify(data));
+        navigate("/AltaAutobuses");
+      });
+
     }
-     const handlerChange = (e) => {
-    //     console.log(stateForm.username)
-       setStateForm({...stateForm,username: e.target.value})
-    //     console.log(stateForm.username)
-     }
-    const handlerChangePassword = (e) => {
-        setStateForm({...stateForm,password: e.target.value})
-    }
+   
     return (
-        <form className='InicioS'>
+        <form ref={form} className='InicioS'>
             <div >
             <img src={Logo} alt="Logotipo de la empresa" className='img' />
             <h3>INICIO DE SESION</h3>
-            <input type="text" value={stateForm.username} onChange={handlerChange}/>
-            <input type="password" value ={stateForm.password} onChange={handlerChangePassword}/>
+            <input type="text" name="usuario"/>
+            <input type="password"name='contrasenia'/>
             <button className='boton' onClick={handlerClick}>Iniciar sesión</button>
             <Link to="/register"><button>Registrate</button></Link>
             <Link to="/AltaAutobuses"><button>Autobuses</button></Link>

@@ -38,6 +38,7 @@ function AltaAutobuses() {
       .then((response) => response.json())
       .then((data) => {
         alert(JSON.stringify(data));
+        navigate("/login");
       });
   };
 
