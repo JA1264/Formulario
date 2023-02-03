@@ -26,7 +26,8 @@ function FormLogin() {
             <input type="text" value={stateForm.username} onChange={handlerChange}/>
             <input type="password" value ={stateForm.password} onChange={handlerChangePassword}/>
             <button className='boton' onClick={handlerClick}>Iniciar sesión</button>
-            <Link to="/register">Registrate</Link>
+            <Link to="/register"><button>Registrate</button></Link>
+            <Link to="/AltaAutobuses"><button>Autobuses</button></Link>
             </div>
            
 {             <div>

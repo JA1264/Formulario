@@ -1,5 +1,5 @@
 import { useRef } from 'react'
-import {useNavigate} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
 import '../../assets/styles/FormRegister.css'
 import Logo from '../../assets/react.svg'
 
@@ -46,8 +46,9 @@ function FormRegister() {
                 <input type="password" />
             </div>
             <button onClick={handlerClick}>Registro</button>
+            <Link to='/login'><button>Regresar</button></Link>
            <div>
-            
+               
            </div>
         </form>
      );
